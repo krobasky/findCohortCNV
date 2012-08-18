@@ -1,0 +1,16 @@
+0-based coordinates for CNVs, interval ends marked with '>>' and '<<'
+deletion threshold = 40
+normalized control reads threshold = 0
+normalized sample reads threshold = 0
+1000	chr1	40540357	40541357	hetdel	1000bp {NOT CODING}
+1000	chr1	40542356	40543358	hetdel	1002bp {NM_000310(2),NM_001142604(2)},PPT1_Segment_2
+1000	chr1	40544356	40545356	hetdel	1000bp {NOT CODING},PPT1_Segment_3
+1000	chr1	40546344	40547356	hetdel	1012bp {NOT CODING},PPT1_Segment_3
+1000	chr1	40548356	40549357	hetdel	1001bp {NOT CODING},PPT1_Segment_3
+1000	chr1	40550357	40551356	hetdel	999bp {NOT CODING},PPT1_Segment_3
+1000	chr1	40552356	40553357	hetdel	1001bp {NOT CODING},PPT1_Segment_3
+1000	chr1	40554356	40554751	hetdel	395bp {NOT CODING},PPT1_Segment_3
+1000	chr1	40555106	40555356	hetdel	250bp {NM_000310(5),NM_001142604(5)},PPT1_Segment_5
+1000	chr1	40557110	40557357	hetdel	247bp {NOT CODING},PPT1_Segment_6
+1000	chr1	40558356	40559356	hetdel	1000bp {NOT CODING},PPT1_Segment_8
+1000	chr1	40560357	40561356	hetdel	999bp {NOT CODING},PPT1_Segment_8

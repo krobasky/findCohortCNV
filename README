@@ -1,0 +1,12 @@
+# Licensed under a Creative Commons Attribution 3.0 Unported License.
+
+# Run the detection on the example:
+
+./src/findVcfHetDeletions.pl $PWD example > out
+
+# Check for proper installation:
+
+diff out expected.out
+
+# (there should be no differences)
+# read comments at the head of ./src/findVcfHetDeletions.pl for more information.

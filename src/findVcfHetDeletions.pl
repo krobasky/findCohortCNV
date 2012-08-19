@@ -64,7 +64,7 @@ require "$rootdir/src/findVcfHetDeletions-util.pl";
 require "$rootdir/config/config.pl";
 require "$projdir/config/config.pl";
 
-open( SMP, "<", "$samplesfile" )  or die $!;
+open( SMP, "<", "$samplesfile" )  or die ($!. " $samplesfile" );
 # get sample filenames
 while( <SMP> ) {
     chomp($_); 
@@ -100,6 +100,7 @@ for $sample (0..$#vcfFiles) {
 print "deletion threshold = $hetdelMedianThreshold\n";
 print "normalized control reads threshold = $hetdelMinMedianThreshold\n"; 
 print "normalized sample reads threshold = $hetdelMinNormCovThreshold\n"; 
+print "hiccup threshold = $hiccupThreshold\n";
 
 while (!eof($vcfFiles[0])) { # check for eof on any file; all should reach eof at the same time
 
@@ -153,10 +154,8 @@ while (!eof($vcfFiles[0])) { # check for eof on any file; all should reach eof a
   if(substr($line,0,1) eq "#") { next; } # skip comments
 
   # sort coverage values to get median
-  #  @sortedNormCov = sort{$a <=> $b} @normCov;
-  #  $median = $sortedNormCov[int($#normCov/2)];
-  $median = $normCov[$controlIdx]; # xxx just use control as 'valid' for now
-
+    @sortedNormCov = sort{$a <=> $b} @normCov;
+    $median = $sortedNormCov[int($#normCov/2)];
 
   # perform state transitions
   for $sample (0..$#vcfFiles) {
@@ -274,3 +273,10 @@ while (!eof($vcfFiles[0])) { # check for eof on any file; all should reach eof a
 
   } # for each sample
 } # for each line (in any file)
+
+# close any remaining open CNVs
+for $sample (0..$#vcfFiles) {
+    if($state[$sample] == $stateCNV) {
+	goStateCloseCNV($cnvchr[$sample], $cnvstart[$sample], $cnvend[$sample], $pchr_ref, $pstart_ref, $pend_ref, $ptag_ref,$sample,$type[$sample]);
+    }
+}

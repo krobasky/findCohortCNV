@@ -4,9 +4,26 @@
 
 ./src/findVcfHetDeletions.pl $PWD example > out
 
+# Run the detection on the ncl data:
+
+./src/findVcfHetDeletions.pl $PWD ncl > out2
+
 # Check for proper installation:
 
 diff out expected.out
+diff out2 ncl.out
 
 # (there should be no differences)
+
+
+# Exactly one of the samples in the data contain a known pathogenic heterozygous deletion:
+#
+# Gene	  Exon/intron	     Mutation	 rsID	 Alleles MAF	      chr	start	end (if different)	notes
+# CLN3	  E12 	 c.954_(962+18)del27bp	 	   	 chr16	      28,493,656	28,493,630	pathogenic
+#
+# The deletion-containing Exon is covered by amplicon 'CLN3_Segment_5'
+# Test to find the sample(s):
+
+./src/findVcfHetDeletions.pl $PWD ncl |grep CLN3_Segment_5
+
 # read comments at the head of ./src/findVcfHetDeletions.pl for more information.

@@ -19,7 +19,7 @@
 @fracMax = (2.5618643100571,2.8332943298238,1.0,1.6608148854262,1.8638995747051,1.9320581649088,1.8643106682096,2.4122843391929);
 $controlIdx = 7; # control is 12, or 7
 
-$hetdelMedianThreshold = 45.0; # 40% catches more (less stringent), 60% catches fewer hetdels
+$hetdelMedianThreshold = 50.0; # 40% catches more (less stringent), 60% catches fewer hetdels
 $hetdelMinMedianThreshold = 500.0; # median has at least this many reads to be counted
 $hetdelMinNormCovThreshold = 5.0; # normalized coverage has at least this many reads to be counted
 $hetdelMinDist = 2; # Tolerance for how many non-hetdels in a row wil be counted before closing the run
